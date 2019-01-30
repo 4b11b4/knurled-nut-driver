@@ -3,7 +3,7 @@
 3D printed drill bit designed for tightening knurled nuts on 3.5mm jacks.<br>
 Knurled nuts are common in [Eurorack](http://www.doepfer.de/a100_man/a100m_e.htm) systems.
 
-## Instructions
+## Instructions for Printing and Use
 See a [writeup](https://4b11b4.com/) (not completed yet) here.
 
 ## Features
@@ -21,8 +21,8 @@ See a [writeup](https://4b11b4.com/) (not completed yet) here.
   bit will simply cause it to slip. In this scenario, you may cause extra wear
   to the bit, but the jack will not be damaged.<br><br>
   Even more preferable is to use a small precision electric drill with an
-  adjustable clutch to set the desired torque. You can see this in action
-  [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
+  adjustable clutch to set the desired torque. You can see (and hear)  this
+  in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
 
 ## Alternative Tools:
 [Exploding Shed](https://www.exploding-shed.com/shop-catalogue/various/)
