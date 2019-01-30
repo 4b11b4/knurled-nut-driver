@@ -7,13 +7,13 @@ Knurled nuts are common in [Eurorack](http://www.doepfer.de/a100_man/a100m_e.htm
 See a [writeup](https://4b11b4.com/) (not completed yet) here.
 
 ## Features
-* alignment: no need to align the two metal extensions
-* plastic: if you have an accident, you will not scratch the module
-* inexpensive: very little material, easily replaceable
-* parametric: can be modified to multiple drill bit sizes
-* durable: no small tips which can break off or become damaged
-* simple: very easy to print, simple design which utilizes friction forces
-* useable with power tools: it is generally recommended not to use any
+* __alignment__: no need to align the two metal extensions
+* __plastic__: if you have an accident, you will not scratch the module
+* __inexpensive__: very little material, easily replaceable
+* __parametric__: can be modified to multiple drill bit sizes
+* __durable__: no small tips which can break off or become damaged
+* __simple__: very easy to print, simple design which utilizes friction forces
+* __useable with power tools__: it is generally recommended not to use any
   power tools for tightening these nuts, as over tightening may damage the
   jack.<br><br>
   However, due to the design, if used with a power tool, the chance of
