@@ -11,8 +11,8 @@ See a [writeup](https://4b11b4.com/) (not completed yet) here.
 * plastic: if you have an accident, you will not scratch the module
 * inexpensive: very little material
 * parametric: can be modified to multiple drill bit sizes
-* useable with power tools: (do not use with regular electric drill)
-  It is possible to use this with certain electric drills. An adjustable clutch
+* useable with power tools: (do not use with regular electric drill)<br>
+  It is possible to use this with certain electric drills.<br>An adjustable clutch
   that allows the user to set the desired torque is preferred. Over-tightening
   may damage the jack.
 
