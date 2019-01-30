@@ -3,6 +3,10 @@
 3D printed drill bit designed for tightening knurled nuts on 3.5mm jacks.<br>
 Knurled nuts are common in [Eurorack](http://www.doepfer.de/a100_man/a100m_e.htm) systems.
 
+![alt
+text](https://github.com/4b11b4/knurled-nut-driver/blob/master/cyl.png
+"Knurled Nut Suction Cup1"
+
 ## Instructions for Printing and Use
 See a [writeup](https://4b11b4.com/) (not completed yet) here.
 
