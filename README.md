@@ -1,6 +1,6 @@
 # Knurled Nut Driver
 ## Description
-3D printed drill bit designed for tightening knurled nuts on 3.5mm jacks.
+3D printed drill bit designed for tightening knurled nuts on 3.5mm jacks.<br>
 Knurled nuts are common in [Eurorack](http://www.doepfer.de/a100_man/a100m_e.htm) systems.
 
 ## Instructions
