@@ -10,21 +10,18 @@
 
 // This drill bit is unique in that most designs feature "nubs" to
 // fit into two "slots" on these knurled nuts. This design completely
-// ignores those "slots". Instead, the inside of the bit is a "cone"
+// ignores those "slots". Instead, the inside of the "grip" is a cone
 // shape. In other words, the cutout is a cylinder with a decreasing
 // diameter as it goes up.
 
 // Instead of having "nubs" which fit into the "slots" of the knurled
-// nut, this bit simply uses friction. A small amount of downward
-// force is required. This does cause the bit to wear out over time.
-// However, the bit is a very small amount of plastic, and this is 
-// not too big of an issue.
+// nut, this "grip" simply uses friction. A small amount of downward
+// force is required. This does cause the "grip" to wear out over time.
+// However, as you wear out one layer (i.e. each "layer" created by the
+// 3D printer), the layer above it will begin to grip the knurled nut.
 
 // With the proper driver, the bit can be used to tighten knurled
 // nuts to an appropriate level of torque.
-
-// Additionally, as you wear out one layer, the layer above it will
-// begin to grip the knurled nut.
 
 // It may be possible to design some even more complex structures
 // inside the bit, so that as you wear out one layer, you will reach
@@ -39,21 +36,21 @@ KNURL_MEASURED_DIAMETER = 7.75; //measured outer diameter of a knurled nut
 // VARIABLES (you may change)
 OUTER_DIAMETER          = 11;  //may decrease for slightly less material
 BIT_MEASURED_DIAMETER   = 4.5; //drill bit size
-TRANSFER_HEIGHT = 3;           //"transfer" is between the bit and shaft
-SHAFT_HEIGHT = 4;              //shaft is inserted into drill chuck
+TRANSFER_HEIGHT         = 3;   //"transfer" is between the bit and shaft
+SHAFT_HEIGHT            = 4;   //shaft is inserted into drill chuck
+OUTER_NUM_ANGLES        = 6;   //usually bits are a hexagon...
+GRIP_NUM_ANGLES         = 40;  //the number of "teeth"
 
 // PRINTER TWEAKS (you may experiment with)
 // Depending on your filament size, layer heights, print temperature, etc
 // you may find slightly better results by tweaking these.
-KNURL_DIAMETER_PRINT_OFFSET = 0.2; //account for width of filament
-BIT_DIAMETER_PRINT_OFFSET   = 0.4; //may adjust for a snug fit in drill
+KNURL_DIAMETER_PRINT_OFFSET = 0.2; // increase if nut does not fit
+BIT_DIAMETER_PRINT_OFFSET   = 0.2; // increase if shaft does not snugly
 
 // ADDITIONAL VARIABLE SETUP (do not change)
-KNURL_DIAMETER = KNURL_MEASURED_DIAMETER + KNURL_DIAMETER_PRINT_OFFSET;
-BIT_DIAMETER   = BIT_MEASURED_DIAMETER + BIT_DIAMETER_PRINT_OFFSET;
-KNURL_RADIUS   = KNURL_DIAMETER/2;
-OUTER_RADIUS   = OUTER_DIAMETER/2;
-BIT_RADIUS     = BIT_DIAMETER/2;
+KNURL_RADIUS  = (KNURL_MEASURED_DIAMETER/2) + KNURL_DIAMETER_PRINT_OFFSET;
+BIT_RADIUS    = (BIT_MEASURED_DIAMETER/2) + BIT_DIAMETER_PRINT_OFFSET;
+OUTER_RADIUS  = OUTER_DIAMETER/2;
 
 flathead=1.25;
 fheight=4;
@@ -64,20 +61,20 @@ nwidth=0.9;
 union() { 
     // cylinder cutout of outer hexagon
     difference() {
-      translate([0,0,0]) cylinder(r=OUTER_RADIUS,h=fheight,$fn=6);
-      translate([0,0,0]) cylinder(r=KNURL_RADIUS,h=fheight,$fn=40);
+      translate([0,0,0]) cylinder(r=OUTER_RADIUS,h=fheight,$fn=OUTER_NUM_ANGLES);
+      translate([0,0,0]) cylinder(r=KNURL_RADIUS,h=fheight,$fn=GRIP_NUM_ANGLES);
       //cube(50,50,50); //uncomment to see a cross-sectional view
     }
     
     // cylinder with decreasing diameter
     difference() {
       tightener();
-      cylinder(r1=KNURL_RADIUS-nwidth+1,r2=KNURL_RADIUS-nwidth,h=fheight,$fn=40);
+      cylinder(r1=KNURL_RADIUS-nwidth+1,r2=KNURL_RADIUS-nwidth,h=fheight,$fn=GRIP_NUM_ANGLES);
     }
     
     // transfer + grip
-    translate([0,0,fheight]) cylinder(r1=OUTER_RADIUS,r2=BIT_RADIUS,h=TRANSFER_HEIGHT,$fn=6);
-    translate([0,0,fheight+TRANSFER_HEIGHT]) cylinder(r=BIT_RADIUS,h=SHAFT_HEIGHT,$fn=6);
+    transfer();
+    shaft();
 };
 
 module tightener() {
@@ -85,5 +82,15 @@ module tightener() {
     l=OUTER_DIAMETER-2;
     h=fheight;
     //translate([0,0,h/2]) cube([w,l,h], center=true);
-    translate([0,0,0]) cylinder(r=KNURL_RADIUS+0.25, h=h, $fn=40);
+    translate([0,0,0]) cylinder(r=KNURL_RADIUS+0.25, h=h, $fn=GRIP_NUM_ANGLES);
+}
+
+module transfer() {
+  translate([0,0,fheight])
+    cylinder(r1=OUTER_RADIUS,r2=BIT_RADIUS,h=TRANSFER_HEIGHT,$fn=OUTER_NUM_ANGLES);
+}
+
+module shaft() {
+  translate([0,0,fheight+TRANSFER_HEIGHT])
+    cylinder(r=BIT_RADIUS,h=SHAFT_HEIGHT,$fn=OUTER_NUM_ANGLES);
 }
