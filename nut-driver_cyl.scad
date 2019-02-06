@@ -39,6 +39,8 @@ KNURL_MEASURED_DIAMETER = 7.75; //measured outer diameter of a knurled nut
 // VARIABLES (you may change)
 OUTER_DIAMETER          = 11;  //may decrease for slightly less material
 BIT_MEASURED_DIAMETER   = 4.5; //drill bit size
+TRANSFER_HEIGHT = 3;           //"transfer" is between the bit and shaft
+SHAFT_HEIGHT = 4;              //shaft is inserted into drill chuck
 
 // PRINTER TWEAKS (you may experiment with)
 // Depending on your filament size, layer heights, print temperature, etc
@@ -58,8 +60,6 @@ fheight=4;
 
 nwidth=0.9;
 
-htransfer=3;
-hgrip=4;
 
 union() { 
     // cylinder cutout of outer hexagon
@@ -74,11 +74,10 @@ union() {
       tightener();
       cylinder(r1=KNURL_RADIUS-nwidth+1,r2=KNURL_RADIUS-nwidth,h=fheight,$fn=40);
     }
-  
-        
+    
     // transfer + grip
-    translate([0,0,fheight]) cylinder(r1=OUTER_RADIUS,r2=(BIT_DIAMETER/2)+BIT_DIAMETER_PRINT_OFFSET,h=htransfer,$fn=6);
-    translate([0,0,fheight+htransfer]) cylinder(r=(BIT_DIAMETER/2)+BIT_DIAMETER_PRINT_OFFSET,h=hgrip,$fn=6);
+    translate([0,0,fheight]) cylinder(r1=OUTER_RADIUS,r2=BIT_RADIUS,h=TRANSFER_HEIGHT,$fn=6);
+    translate([0,0,fheight+TRANSFER_HEIGHT]) cylinder(r=BIT_RADIUS,h=SHAFT_HEIGHT,$fn=6);
 };
 
 module tightener() {
