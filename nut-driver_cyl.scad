@@ -32,13 +32,13 @@
 
 // CONSTANTS (do not change)
 KNURL_MEASURED_DIAMETER = 7.75; //measured outer diameter of a knurled nut
-KNURL_MEASURED_HEIGHT   = 0.9;  //height of a knurled nut 
+KNURL_MEASURED_HEIGHT   = 1.5;  //height of a knurled nut 
 
 // PRINTER TWEAKS (you may experiment with)
 // Depending on your filament size, layer heights, print temperature, etc
 // you may find slightly better results by tweaking these.
 KNURL_DIAMETER_PRINT_OFFSET = 0.2; //increase if nut does not fit
-KNURL_HEIGHT_PRINT_OFFSET   = 0.5; //determines height of lip at end of bit 
+KNURL_HEIGHT_PRINT_OFFSET   = 1.0; //determines height of lip at end of bit 
 BIT_DIAMETER_PRINT_OFFSET   = 0.2; //increase if shaft does not snugly
 
 // VARIABLES (you may change)
