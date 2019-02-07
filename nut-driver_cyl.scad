@@ -43,7 +43,7 @@ BIT_DIAMETER_PRINT_OFFSET   = 0.2; //increase if shaft does not snugly
 
 // VARIABLES (you may change)
 OUTER_DIAMETER          = 11;  //may decrease for slightly less material
-GRIP_DIAMETER_CHANGE    = 1;   //how much the grip diameter decreases
+GRIP_DIAMETER_CHANGE    = 1.0; //how much the grip diameter decreases
 GRIP_HEIGHT             = 4;   //size of inside cone
 BIT_DIAMETER            = 4.5; //common drill bit sizes: 4.5, 6mm
 SHAFT_HEIGHT            = 4;   //shaft is inserted into drill chuck
