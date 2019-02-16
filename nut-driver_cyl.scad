@@ -6,6 +6,7 @@
 // 1/30/2019
 
 
+
 // A model for a 3D printed drill bit designed to tighten 3.5mm
 // knurled nuts. These are common in Eurorack synthesizer modules.
 
@@ -41,19 +42,19 @@
 KNURL_D_MEASURE = 7.70; //measured outer diameter of a knurled nut
 KNURL_H_MEASURE = 1.87; //height of a knurled nut
 THREAD_H_MEASURE = 4.65; //height of threads on jack
-BIT_D_MEASURE = 4.5; //common drill bit sizes: 4.5, 6mm
+BIT_D_MEASURE = 4.50; //common drill bit sizes: 4.5, 6mm
 
 // PRINTER TWEAKS (you may experiment with)
 // Depending on your filament size, layer heights, print temperature, etc
 // you may find slightly better results by tweaking these.
-KNURL_R_TWEAK = 0.2; //increase if nut does not fit
-KNURL_H_TWEAK = 1.5; //reduce height of lip at end of bit, max=KNURL_H_MEASURE
-BIT_R_TWEAK   = 0.2; //increase if shaft does not snugly
-GRIP_H_TWEAK = 0; //increase if bit bottoms out. knurl_h is 1.87mm, so THREAD_H_MEASURE should be an extra 1.87mm too big already...? assuming the "grip" area is hitting the jack at the top
+KNURL_R_TWEAK = 0.150; //increase if nut does not fit
+KNURL_H_TWEAK = 1.50; //reduce height of lip at end of bit, max=KNURL_H_MEASURE
+BIT_R_TWEAK   = 0.200; //increase if shaft does not fit snugly
+GRIP_H_TWEAK = 0.00; //increase if bit bottoms out. knurl_h is 1.87mm, so THREAD_H_MEASURE should be an extra 1.87mm too big already...? assuming the "grip" area is hitting the jack at the top
 
 // VARIABLES SETUP (you may change)
-GRIP_SHELL = 1.5; //thickness outside wall <-> grip cutout
-GRIP_R_CHANGE = 0.5; //how much the grip radius decreases
+GRIP_SHELL = 1.50; //thickness outside wall <-> grip cutout
+GRIP_R_CHANGE = 0.750; //how much the grip radius decreases
 SHAFT_HEIGHT            = 4;   //shaft is inserted into drill chuck
 TRANSFER_HEIGHT         = 3;   //"transfer" is between the bit and shaft
 OUTER_NUM_ANGLES        = 6;   //usually bits are a hexagon...
@@ -61,7 +62,7 @@ GRIP_NUM_ANGLES         = 40;  //the number of "teeth"
 
 // FINAL VARIABLE SETUP (do not change)
 KNURL_RADIUS        = KNURL_D_MEASURE/2 + KNURL_R_TWEAK;
-KNURL_HEIGHT        = KNURL_H_MEASURE - KNURL_H_TWEAK;
+KNURL_H        = KNURL_H_MEASURE - KNURL_H_TWEAK;
 GRIP_INNER_RADIUS   = KNURL_RADIUS - GRIP_R_CHANGE;
 GRIP_HEIGHT         = THREAD_H_MEASURE + GRIP_H_TWEAK;   //size of inside cone
 BIT_RADIUS          = BIT_D_MEASURE/2 + BIT_R_TWEAK;
@@ -77,12 +78,12 @@ union() {
 
 module grip() {
   difference() {
-    cylinder(r=OUTER_RADIUS,h=GRIP_HEIGHT,$fn=OUTER_NUM_ANGLES); //outside
-    cylinder(r=KNURL_RADIUS,h=KNURL_HEIGHT,$fn=GRIP_NUM_ANGLES); //lip
-    translate([0,0,KNURL_HEIGHT]) //cone cutout
-      cylinder(r1=KNURL_RADIUS,r2=GRIP_INNER_RADIUS,h=GRIP_HEIGHT-KNURL_HEIGHT,$fn=GRIP_NUM_ANGLES);
+    cylinder(r=OUTER_RADIUS,h=GRIP_HEIGHT,$fn=OUTER_NUM_ANGLES); //outside cylinder solid
+    cylinder(r=KNURL_RADIUS,h=KNURL_H,$fn=GRIP_NUM_ANGLES); //KNURL_H ("lip") cylinder cutout
+    translate([0,0,KNURL_H]) //cone cutout "cylinder with decreasing radius"
+      cylinder(r1=KNURL_RADIUS,r2=GRIP_INNER_RADIUS,h=GRIP_HEIGHT-KNURL_H,$fn=GRIP_NUM_ANGLES);
     /////// UNCONMMENT TO VIEW CROSS-SECTION OF BIT
-    //translate([0,-500,-100]) cube(1000,1000,1000);
+    translate([0,-500,-100]) cube(1000,1000,1000);
     ///////
   }
 }
