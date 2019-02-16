@@ -47,7 +47,7 @@ BIT_D_MEASURE = 4.50; //common drill bit sizes: 4.5, 6mm
 // PRINTER TWEAKS (you may experiment with)
 // Depending on your filament size, layer heights, print temperature, etc
 // you may find slightly better results by tweaking these.
-KNURL_R_TWEAK = 0.150; //increase if nut does not fit
+KNURL_R_TWEAK = 0.150 ; //increase if nut does not fit
 KNURL_H_TWEAK = 1.50; //reduce height of lip at end of bit, max=KNURL_H_MEASURE
 BIT_R_TWEAK   = 0.200; //increase if shaft does not fit snugly
 GRIP_H_TWEAK = 0.00; //increase if bit bottoms out. knurl_h is 1.87mm, so THREAD_H_MEASURE should be an extra 1.87mm too big already...? assuming the "grip" area is hitting the jack at the top
@@ -83,7 +83,7 @@ module grip() {
     translate([0,0,KNURL_H]) //cone cutout "cylinder with decreasing radius"
       cylinder(r1=KNURL_RADIUS,r2=GRIP_INNER_RADIUS,h=GRIP_HEIGHT-KNURL_H,$fn=GRIP_NUM_ANGLES);
     /////// UNCONMMENT TO VIEW CROSS-SECTION OF BIT
-    translate([0,-500,-100]) cube(1000,1000,1000);
+    //translate([0,-500,-100]) cube(1000,1000,1000);
     ///////
   }
 }
