@@ -20,7 +20,8 @@ See a [writeup](https://4b11b4.com/k2nd.html) here.
   power tools for tightening these nuts, as over tightening may damage the
   jack.
 
-However, this design will not damage your jack
+## Why?
+This design will not damage your jack
 if used with a power tool.
 When the nut is tightened, the design of the
 bit will simply cause it to slip rather than over-torque the nut.
