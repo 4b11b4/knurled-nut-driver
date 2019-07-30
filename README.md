@@ -15,22 +15,23 @@ See a [writeup](https://4b11b4.com/k2nd.html) here.
 * __parametric__: can be modified to multiple drill bit sizes
 * __durable__: no small tips which can break off or become damaged
 * __simple__: very easy to print, simple design which uses friction forces
-* __useable with power tools__: it is generally recommended not to use any
+* __useable with power tools__: most people will warn you
+  (generally) to never use
   power tools for tightening these nuts, as over tightening may damage the
-  jack.<br><br>
+  jack.
 
-  However, this design will not damage your jack
-  if used with a power tool.
-  When the nut is tightened, the design of the
-  bit will simply cause it to slip rather than over-torque the nut.
-  (note: of course, you can <b>still</b> overtorque by pressing down too hard
-  <br><br>
-  In this scenario, you may cause extra wear
-  to the bit, but the jack will not be damaged.<br><br>
+However, this design will not damage your jack
+if used with a power tool.
+When the nut is tightened, the design of the
+bit will simply cause it to slip rather than over-torque the nut.
+(note: of course, you can <b>still</b> overtorque by pressing down too hard
+<br><br>
+In this scenario, you may cause extra wear
+to the bit, but the jack will not be damaged.<br><br>
 
-  Even more preferable is to use a small precision electric drill with an
-  adjustable clutch to set the desired torque. You can see (and hear) this
-  in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
+Even more preferable is to use a small precision electric drill with an
+adjustable clutch to set the desired torque. You can see (and hear) this
+in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
 
 ## Recommended Power Tool
 TODO: make this link jump to recommended tools section
