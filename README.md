@@ -35,8 +35,8 @@ adjustable clutch to set the desired torque. You can see (and hear) this
 in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
 
 ## Recommended Power Tool
-TODO: make this link jump to recommended tools section
--- [writeup](https://4b11b4.com/k2nd.html)
+[See the writeup](https://4b11b4.com/k2nd.html) for links to the two power tools I used.
+Those affiliate links don't work...
 
 ## Alternative Tools:
 [Exploding Shed](https://www.exploding-shed.com/shop-catalogue/various/)
