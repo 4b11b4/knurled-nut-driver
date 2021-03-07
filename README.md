@@ -3,10 +3,10 @@
 3D printed drill bit designed for tightening knurled nuts on 3.5mm jacks.<br>
 Knurled nuts are common in [Eurorack](http://www.doepfer.de/a100_man/a100m_e.htm) systems.
 
-![Knurled Nut Suction Cup](https://github.com/4b11b4/knurled-nut-driver/blob/master/cyl.png)
+![Knurled Nut Suction Cup](https://raw.githubusercontent.com/4b11b4/knurled-nut-driver/master/img/cyl.png)
 
 ## Instructions for Printing and Use
-See a [writeup](https://4b11b4.com/) (not completed yet) here.
+See a [writeup](https://4b11b4.com/k2nd.html) here.
 
 ## Features
 * __alignment__: no need to align the two metal extensions
@@ -14,17 +14,29 @@ See a [writeup](https://4b11b4.com/) (not completed yet) here.
 * __inexpensive__: very little material, easily replaceable
 * __parametric__: can be modified to multiple drill bit sizes
 * __durable__: no small tips which can break off or become damaged
-* __simple__: very easy to print, simple design which utilizes friction forces
-* __useable with power tools__: it is generally recommended not to use any
+* __simple__: very easy to print, simple design which uses friction forces
+* __useable with power tools__: most people will warn you
+  (generally) to never use
   power tools for tightening these nuts, as over tightening may damage the
-  jack.<br><br>
-  However, due to the design, if used with a power tool, the chance of
-  damaging your jack is lessened. When the nut is tightened, the design of the
-  bit will simply cause it to slip. In this scenario, you may cause extra wear
-  to the bit, but the jack will not be damaged.<br><br>
-  Even more preferable is to use a small precision electric drill with an
-  adjustable clutch to set the desired torque. You can see (and hear)  this
-  in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
+  jack.
+
+## Why?
+This design will not damage your jack
+if used with a power tool.
+When the nut is tightened, the design of the
+bit will simply cause it to slip rather than over-torque the nut.
+(note: of course, you can <b>still</b> overtorque by pressing down too hard
+<br><br>
+In this scenario, you may cause extra wear
+to the bit, but the jack will not be damaged.<br><br>
+
+Even more preferable is to use a small precision electric drill with an
+adjustable clutch to set the desired torque. You can see (and hear) this
+in action [here](https://www.youtube.com/watch?v=a87VO5FZRd8).
+
+## Recommended Power Tool
+[See the writeup](https://4b11b4.com/k2nd.html) for links to the two power tools I used.
+Those affiliate links don't work...
 
 ## Alternative Tools:
 [Exploding Shed](https://www.exploding-shed.com/shop-catalogue/various/)
