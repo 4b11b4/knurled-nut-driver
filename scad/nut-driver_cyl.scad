@@ -1,5 +1,5 @@
 // Anton Bilbaeno
-// 4     b11b4
+// 4b11b4
 // github: 4b11b4
 // thingiverse: 4b11b4
 // www.4b11b4.com
@@ -37,18 +37,20 @@
 
 
 
-// REAL-WORLD MEASUREMENTS USING METAL CALIPERS
+// REAL-WORLD MEASUREMENTS USING METAL CALIPERS (mm)
 // If default .STL files do not work, try check these measurements.
 KNURL_D_MEASURE = 7.70; //measured outer diameter of a knurled nut
 KNURL_H_MEASURE = 1.87; //height of a knurled nut
 THREAD_H_MEASURE = 4.65; //height of threads on jack
-BIT_D_MEASURE = 4.50; //common drill bit sizes: 4.5, 6mm
+//common drill bit sizes: 7.1, 4.5mm
+BIT_D_MEASURE = 7.1;
 
-// PRINTER TWEAKS (you may experiment with)
-// Depending on your filament size, layer heights, print temperature, etc
-// you may find slightly better results by tweaking these.
-KNURL_R_TWEAK = 0.150 ; //increase if nut does not fit
-KNURL_H_TWEAK = 1.50; //reduce height of lip at end of bit, max=KNURL_H_MEASURE
+// PRINTER TWEAKS (you may experiment)
+// depends on filament size, layer heights, print temperature, etc
+// you may find slightly better results by tweaking these
+
+KNURL_R_TWEAK = 0.125 ; //increase if nut does not fit
+KNURL_H_TWEAK = 1.75; //reduce height of lip at end of bit, max=KNURL_H_MEASURE
 BIT_R_TWEAK   = 0.200; //increase if shaft does not fit snugly
 GRIP_H_TWEAK = 0.00; //increase if bit bottoms out. knurl_h is 1.87mm, so THREAD_H_MEASURE should be an extra 1.87mm too big already...? assuming the "grip" area is hitting the jack at the top
 
@@ -58,33 +60,59 @@ GRIP_R_CHANGE = 0.750; //how much the grip radius decreases
 SHAFT_HEIGHT            = 4;   //shaft is inserted into drill chuck
 TRANSFER_HEIGHT         = 3;   //"transfer" is between the bit and shaft
 OUTER_NUM_ANGLES        = 6;   //usually bits are a hexagon...
-GRIP_NUM_ANGLES         = 40;  //the number of "teeth"  
+GRIP_NUM_ANGLES         = 40;  //the number of "teeth"
+KNURL_R_STEP = -0.1;
+KNURL_H_STEP = 0.0125;
 
 // FINAL VARIABLE SETUP (do not change)
-KNURL_RADIUS        = KNURL_D_MEASURE/2 + KNURL_R_TWEAK;
+KNURL_R        = KNURL_D_MEASURE/2 + KNURL_R_TWEAK;
 KNURL_H        = KNURL_H_MEASURE - KNURL_H_TWEAK;
-GRIP_INNER_RADIUS   = KNURL_RADIUS - GRIP_R_CHANGE;
+GRIP_INNER_RADIUS   = KNURL_R - GRIP_R_CHANGE;
 GRIP_HEIGHT         = THREAD_H_MEASURE + GRIP_H_TWEAK;   //size of inside cone
 BIT_RADIUS          = BIT_D_MEASURE/2 + BIT_R_TWEAK;
-OUTER_RADIUS        = KNURL_RADIUS + GRIP_SHELL;
+OUTER_RADIUS        = KNURL_R + GRIP_SHELL;
 
 
 
 union() {
-  grip();
+  difference() {
+    grip();
+    /////// UNCONMMENT TO VIEW CROSS-SECTION OF BIT
+    //translate([0,-500,-100]) cube(1000,1000,1000);
+    ///////
+  }
   transfer();
   shaft();
 };
 
 module grip() {
+  union() {
+    
+    difference() {
+      cylinder(r=OUTER_RADIUS,h=GRIP_HEIGHT,$fn=OUTER_NUM_ANGLES); //outside cylinder solid
+      cylinder(r=KNURL_R,h=KNURL_H,$fn=GRIP_NUM_ANGLES); //KNURL_H ("lip") cylinder cutout
+      translate([0,0,KNURL_H]) //cone cutout "cylinder with decreasing radius"
+        cylinder(r1=KNURL_R,r2=GRIP_INNER_RADIUS,h=GRIP_HEIGHT-KNURL_H,$fn=GRIP_NUM_ANGLES);
+    }
+    
+    kk1();
+  }
+}
+
+module kk1() {
   difference() {
-    cylinder(r=OUTER_RADIUS,h=GRIP_HEIGHT,$fn=OUTER_NUM_ANGLES); //outside cylinder solid
-    cylinder(r=KNURL_RADIUS,h=KNURL_H,$fn=GRIP_NUM_ANGLES); //KNURL_H ("lip") cylinder cutout
-    translate([0,0,KNURL_H]) //cone cutout "cylinder with decreasing radius"
-      cylinder(r1=KNURL_RADIUS,r2=GRIP_INNER_RADIUS,h=GRIP_HEIGHT-KNURL_H,$fn=GRIP_NUM_ANGLES);
-    /////// UNCONMMENT TO VIEW CROSS-SECTION OF BIT
-    //translate([0,-500,-100]) cube(1000,1000,1000);
-    ///////
+    translate([0,0,KNURL_H+KNURL_H_STEP]) //cone cutout "cylinder with decreasing radius"
+      cylinder(r=KNURL_R, h=GRIP_HEIGHT-KNURL_H, $fn=GRIP_NUM_ANGLES*2);
+    translate([0,0,KNURL_H+KNURL_H_STEP]) //cone cutout "cylinder with decreasing radius"
+      cylinder(r1=KNURL_R-KNURL_R_STEP,r2=GRIP_INNER_RADIUS, h=GRIP_HEIGHT-KNURL_H, $fn=GRIP_NUM_ANGLES/10);
+    
+    KK_MULT = 90;
+    for (i=[0:KK_MULT]) {
+      translate([0,0,KNURL_H+KNURL_H_STEP]) { //cone cutout "cylinder with decreasing radius"
+        rotate([0,0,i*(360/KK_MULT)])
+          cylinder(r1=KNURL_R-KNURL_R_STEP,r2=GRIP_INNER_RADIUS, h=GRIP_HEIGHT-KNURL_H, $fn=GRIP_NUM_ANGLES/KK_MULT);
+      }
+    }
   }
 }
 
